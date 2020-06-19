@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+
+{#        NAME          #}
+        <div class="form-group">
+        {{ form.name.label }}
+        {{ form.name(class="form-control") }}
+        </div>
+        {% for error in form.name.errors %}
+            <div class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+
+{#    EMAIL    #}
+        <div class="form-group">
+            {{ form.email.label }}
+            {{ form.email(class="form-control") }}
+            <small id="emailHelp" class="form-text text-muted">Мы никому о вас не расскажем.</small>
+        </div>
+        {% for error in form.email.errors %}
+            <div class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+
+{#    PASSWORD    #}
+        <div class="form-group">
+            {{ form.password.label }}
+            {{ form.password(class="form-control") }}
+            <small id="passwordHelp" class="form-text text-muted">Пароль должен состоять минимум из 6 символов.</small>
+        </div>
+        {% for error in form.password.errors %}
+            <div class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+
+{#    PASSWORD  REPEAT  #}
+        <div class="form-group">
+            {{ form.repeat_password.label }}
+            {{ form.repeat_password(class="form-control") }}
+        </div>
+        {% for error in form.repeat_password.errors %}
+            <div class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+
+{#   AGE   #}
+        <div class="form-group">
+            {{ form.age.label }}
+            {{ form.age(class="form-control", type="number") }}
+        </div>
+        {% for error in form.age.errors %}
+            <div class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+
+    {#    SEX  #}
+        <div class="form-group">
+            {{ form.sex.label }}
+            {{ form.sex(class="custom-select") }}
+        </div>
+        {% for error in form.sex.errors %}
+            <div class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+
+    {# ABOUT ME #}
+        <div class="form-group">
+            {{ form.about_me.label }}
+            {{ form.about_me(class="form-control") }}
+        </div>
+        {% for error in form.about_me.errors %}
+            <div class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+{% endblock content %}
+
+{% block script_src %}
+    <script src="/static/js/check-password.js"></script>
+{#    <script src="url_for('static', filename='js/check-password.js')"></script>#}
+{% endblock script_src %}
